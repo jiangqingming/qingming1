@@ -1,0 +1,76 @@
+import randint
+import time                        # 导入随机生成数字模块
+
+start1 = False
+shule = False
+start = True
+
+while start:                                      # 开始
+    print('玩一把吧！')
+    print('5')
+    time.sleep(1)
+    print("4,")
+    time.sleep(1)
+    print("3")
+    time.sleep(1)
+    print("2")
+    time.sleep(1)
+    print("1")
+	
+    print('猜数，你有10次机会')                     # 开始语言
+    caishu = randint(1, 1)                  # 随机生成1~100
+
+    for caishu1 in range(10):                    # 使用for循环开始猜数
+        print('你还有' + str(10 - caishu1) + '次机会')
+        inputshu = input()                       # 输入数字
+        dc = inputshu.isalpha()                  # 判断是否为数字
+        if dc:                                   # 如果输入错误
+            print('错误请入数字')
+            continue                             # 重新输入
+
+        if int(inputshu) > caishu:               # 如果猜大了
+            print('猜大了')
+
+        elif int(inputshu) < caishu:             # 如果猜小了
+            print('猜小了')
+
+        else:
+            print('猜对了！')                     # 如果猜对了
+            start = False                        # 退出该循环
+            break
+        if caishu1 >= 10:
+            shule = True                         # 输了
+            break                                # 退出该循环
+    while not start:                             # 赢了执行此代码
+        print('你还玩吗？\n')
+        zailayic = input('玩输a,不玩输b\n')        # 赢了之后的输入
+        zailayic1 = zailayic.lower()             # 将输入的内容变更为小写
+        DC = zailayic.isnumeric()                # 判断是否为字母，如果为字母，DC为False,如果为数字，DC为True
+
+        if DC:                                   # 判断是否为字母
+            print('错误，请输入字母！\n')
+            continue
+
+        if zailayic1 == 'a':                     # 如果zailaiyic=a
+            print('好的')
+            start = True
+            break
+
+        elif zailayic1 == "b":                   # 如果zailaiyic=b
+            print('你逝世了' * 9999)
+            start1 = True
+            break                                # 退出此循环
+
+        else:                                    # 如果输入的不是a也不是b
+            print('错误，重新输入'):
+            continue                             # 重新输入
+
+
+while shule:                                     # 输了执行此代码
+    print('输了你没机会了'*99)
+    print('杀掉！结束！' * 9)                      # 撑爆你的cpu        break                                        # 退出
+    break
+
+while start1:
+    print('惩罚退出者' * 99999)
+    print('再见再见，永远不见' * 99999)            # 惩罚退出者
